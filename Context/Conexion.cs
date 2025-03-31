@@ -1,41 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System;
-using Microsoft.Data.SqlClient; // Usa Microsoft.Data.SqlClient para .NET 8
+﻿using Microsoft.Data.SqlClient; // Usa Microsoft.Data.SqlClient para .NET 8
 
 
 namespace Dogman.Context
-{ 
-        public class Conexion
+{
+    public class Conexion
+    {
+        private readonly string connectionString;
+
+        public Conexion()
         {
-            private readonly string connectionString;
+            connectionString = "Server=LAPTOP-8ACQMTFU\\MSSQLSERVER01;Database=Dogman;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
+        }
 
-            public Conexion()
+        public SqlConnection GetConnection()
+        {
+            try
             {
-                connectionString = "Server=LAPTOP-8ACQMTFU\\MSSQLSERVER01;Database=Dogman;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;";
+                SqlConnection conn = new SqlConnection(connectionString);
+                return conn;
             }
-
-            public string GetConnectionString()
+            catch (Exception ex)
             {
-                return connectionString;
+                throw new Exception("Error al conectar con la base de datos: " + ex.Message);
             }
+        }
 
-            public void ProbarConexion()
+        public void ProbarConexion()
+        {
+            try
             {
-                try
-                {
-                    using var conexion = new SqlConnection(connectionString);
-                    conexion.Open();
-                    Console.WriteLine("✅ Conexión exitosa a SQL Server.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"❌ Error al conectar: {ex.Message}");
-                }
+                using var conexion = new SqlConnection(connectionString);
+                conexion.Open();
+                Console.WriteLine("✅ Conexión exitosa a SQL Server.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error al conectar: {ex.Message}");
             }
         }
     }
+}
 

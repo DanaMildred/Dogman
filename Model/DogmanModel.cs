@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dogman.Model
+﻿namespace Dogman.Model
 {
     public class DogManModel
     {
@@ -20,10 +14,10 @@ namespace Dogman.Model
         }
 
         public int Id_Personaje { get; set; }
-        public string Nombre { get; set; }
-        public string Tipo { get; set; }
-        public string Habilidad_Especial { get; set; }
-        public string Imagen_Url { get; set; }
+        public string ?Nombre { get; set; }
+        public string ?Tipo { get; set; }
+        public string ?Habilidad_Especial { get; set; }
+        public string? Imagen_Url { get; set; }
     }
 
 }

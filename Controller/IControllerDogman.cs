@@ -1,14 +1,12 @@
 ﻿using Dogman.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dogman.Controller
 {
     interface IControllerDogman
     {
         List<DogManModel> ObtenerPersonajes();
+        bool InsertarPersonaje(DogManModel personaje);
+        bool ActualizarPersonaje(int id, DogManModel personaje);
+        bool EliminarPersonaje(int id);
     }
 }

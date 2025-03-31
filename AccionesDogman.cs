@@ -1,0 +1,6 @@
+﻿namespace Dogman
+{
+    class AccionesDogman
+    {
+    }
+}
